@@ -43,11 +43,16 @@ function Navbar() {
   }
 
   return (
-    <nav>
-      <Hamburger toggled={isOpen} toggle={setOpen} />
-      <div className="logo">
-        <img src={logo} alt="" />
-      </div>
+    <div className={`main-content ${isOpen ? "shifted" : ""}`}>
+      <nav className="navbar">
+        <div className="container">
+          <Hamburger toggled={isOpen} toggle={setOpen} />
+          <div className="logo">
+            <img src={logo} alt="logo" />
+          </div>
+        </div>
+      </nav>
+      {/* konten lain di sini */}
       {isOpen && (
         <div className="list-menu">
           <ul>
@@ -57,7 +62,7 @@ function Navbar() {
           </ul>
         </div>
       )}
-    </nav>
+    </div>
   );
 }
 
