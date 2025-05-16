@@ -1,6 +1,6 @@
 import { Sling as Hamburger } from "hamburger-react";
-import { Children, useState } from "react";
-import logo from "../assets/logo.png";
+import { useState } from "react";
+import logo1 from "../assets/logo1.png";
 export default function Navbar({ setQuery }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,7 +16,7 @@ export default function Navbar({ setQuery }) {
   }
 
   const sign_in_Style = {
-    color: "black",
+    color: "white",
     fontSize: "1.2rem",
     fontWeight: "bold",
     cursor: "pointer",
@@ -25,7 +25,7 @@ export default function Navbar({ setQuery }) {
 
   return (
     <div className={`main-content ${isOpen ? "shifted" : ""}`}>
-      <nav className="navbar">
+      <Nav>
         <LeftSection>
           <Hamburger
             style={{ marginLeft: "2rem" }}
@@ -37,12 +37,16 @@ export default function Navbar({ setQuery }) {
         <SearchForm handleSearch={handleSearch} />
 
         <Login sign_in_Style={sign_in_Style} />
-      </nav>
+      </Nav>
 
       {/* konten lain di sini */}
       {isOpen && <ListMenu />}
     </div>
   );
+}
+
+function Nav({ children }) {
+  return <nav className="navbar">{children}</nav>;
 }
 
 function LeftSection({ children }) {
@@ -52,7 +56,7 @@ function LeftSection({ children }) {
 function Logo() {
   return (
     <div className="logo">
-      <img src={logo} alt="logo" />
+      <img src={logo1} alt="logo" />
     </div>
   );
 }
@@ -79,6 +83,7 @@ function ListMenu() {
       <ul>
         <li>Saved</li>
         <li>Tv Shows</li>
+        <li>Movies</li>
         <li>Trending</li>
         <li>Genre</li>
       </ul>

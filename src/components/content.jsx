@@ -12,18 +12,18 @@ export default function MainContent({ movies, error }) {
 
 function Content({ movie }) {
   return (
-    <li className="content" key={movie.imdbID}>
+    <div className="content" key={movie.imdbID}>
       <Tilt
         className="parallax-effect-glare-scale"
         perspective={600}
         glareEnable={true}
         glareMaxOpacity={0.45}
         scale={1.02}
-        gyroscope={true}
+        gyroscope={false}
       >
         <img className="img-content" src={movie.Poster} alt={movie.Title} />
         <span className="span-content">{movie.Title}</span>
       </Tilt>
-    </li>
+    </div>
   );
 }
