@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import logo from "./assets/logo.png";
-import { Sling as Hamburger } from "hamburger-react";
+import Navbar from "./components/navbar";
+import MainContent from "./components/content";
 
 const KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
-  const query = "interstellar";
+  const [query, setQuery] = useState("interstellar");
+
   useEffect(() => {
     async function fetchMovies() {
       try {
@@ -30,39 +32,13 @@ function App() {
     }
 
     fetchMovies();
-  }, []);
-
-  return <Navbar />;
-}
-
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function setOpen() {
-    setIsOpen(() => !isOpen);
-  }
+  }, [query]);
 
   return (
-    <div className={`main-content ${isOpen ? "shifted" : ""}`}>
-      <nav className="navbar">
-        <div className="container">
-          <Hamburger toggled={isOpen} toggle={setOpen} />
-          <div className="logo">
-            <img src={logo} alt="logo" />
-          </div>
-        </div>
-      </nav>
-      {/* konten lain di sini */}
-      {isOpen && (
-        <div className="list-menu">
-          <ul>
-            <li>saved</li>
-            <li>trending</li>
-            <li>genre</li>
-          </ul>
-        </div>
-      )}
-    </div>
+    <>
+      <Navbar setQuery={setQuery} />{" "}
+      <MainContent movies={movies} error={error} />
+    </>
   );
 }
 
