@@ -20,14 +20,18 @@ export default function Navbar({ setQuery }) {
     fontSize: "1.2rem",
     fontWeight: "bold",
     cursor: "pointer",
-    marginRight: "2rem",
+    marginRight: "3rem",
   };
 
   return (
     <div className={`main-content ${isOpen ? "shifted" : ""}`}>
       <nav className="navbar">
         <LeftSection>
-          <Hamburger toggled={isOpen} toggle={setOpen} />
+          <Hamburger
+            style={{ marginLeft: "2rem" }}
+            toggled={isOpen}
+            toggle={setOpen}
+          />
           <Logo />
         </LeftSection>
         <SearchForm handleSearch={handleSearch} />
@@ -73,9 +77,10 @@ function ListMenu() {
   return (
     <div className="list-menu">
       <ul>
-        <li>saved</li>
-        <li>trending</li>
-        <li>genre</li>
+        <li>Saved</li>
+        <li>Tv Shows</li>
+        <li>Trending</li>
+        <li>Genre</li>
       </ul>
     </div>
   );
