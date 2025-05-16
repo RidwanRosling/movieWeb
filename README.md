@@ -24,7 +24,7 @@
 * Enter a movie title in the search bar and press Enter to fetch and display results.
 * Scroll through the movie gallery to see posters and titles.
 
-##Link web
+## Link web
 * https://ridwanrosling.github.io/movieWeb/
 
 ## License
