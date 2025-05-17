@@ -1,13 +1,31 @@
 import Tilt from "react-parallax-tilt";
 
 export default function MainContent({ movies, error }) {
-  return (
-    <div className="container-content">
-      {movies.map((movie) => (
-        <Content key={movie.imdbID} movie={movie} />
-      ))}
-    </div>
-  );
+  if (error) {
+    return (
+      <div
+        className="error"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <h1 style={{ color: "white", fontSize: "2rem", textAlign: "center" }}>
+          {error}
+        </h1>
+      </div>
+    );
+  } else {
+    return (
+      <div className="container-content">
+        {movies.map((movie) => (
+          <Content key={movie.imdbID} movie={movie} error={error} />
+        ))}
+      </div>
+    );
+  }
 }
 
 function Content({ movie }) {

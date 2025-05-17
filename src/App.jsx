@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import logo from "./assets/logo.png";
 import Navbar from "./components/navbar";
 import MainContent from "./components/content";
 import { AnimatedBackground } from "animated-backgrounds";
@@ -24,6 +23,8 @@ function App() {
         const data = await res.json();
 
         if (data.Response === "False") throw new Error("Movie Not found");
+
+        setError("");
         setMovies(data.Search);
         console.log(data.Search);
         console.log(data);
