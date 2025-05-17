@@ -22,8 +22,8 @@ function Content({ movie }) {
         gyroscope={false}
       >
         <img className="img-content" src={movie.Poster} alt={movie.Title} />
-        <span className="span-content">{movie.Title}</span>
       </Tilt>
+      <span className="span-content">{movie.Title}</span>
     </div>
   );
 }

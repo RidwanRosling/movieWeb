@@ -21,6 +21,8 @@ export default function Navbar({ setQuery }) {
     fontWeight: "bold",
     cursor: "pointer",
     marginRight: "3rem",
+    fontFamily: "Roboto, sans-serif",
+    textDecoration: "none",
   };
 
   return (
@@ -31,6 +33,7 @@ export default function Navbar({ setQuery }) {
             style={{ marginLeft: "2rem" }}
             toggled={isOpen}
             toggle={setOpen}
+            color="white"
           />
           <Logo />
         </LeftSection>
@@ -69,10 +72,10 @@ function SearchForm({ handleSearch }) {
   );
 }
 
-function Login({ sign_in_Style }) {
+function Login() {
   return (
     <div className="login">
-      <span style={sign_in_Style}>Sign in</span>
+      <span className="login-teks">Sign in</span>
     </div>
   );
 }

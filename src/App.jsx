@@ -38,8 +38,8 @@ function App() {
 
   return (
     <>
-      <Navbar setQuery={setQuery} />{" "}
-      <AnimatedBackground animationName="starryNight" />
+      <Navbar setQuery={setQuery} />
+      <AnimatedBackground animationName="fireflies" />
       <MainContent movies={movies} error={error} />
     </>
   );
