@@ -49,15 +49,11 @@ function App() {
         setIsClicked={setIsClicked}
       />
       <AnimatedBackground animationName="fireflies" />
-      {isClicked ? (
-        <Saved saveContent={saveContent} isClicked={isClicked} />
-      ) : (
-        <MainContent
-          saveListContent={setSaveContent}
-          movies={movies}
-          error={error}
-        />
-      )}
+      <MainContent
+        saveListContent={setSaveContent}
+        movies={movies}
+        error={error}
+      />
     </>
   );
 }

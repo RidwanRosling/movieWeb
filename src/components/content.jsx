@@ -5,14 +5,18 @@ import { useState } from "react";
 export default function MainContent({ movies, error, saveListContent }) {
   function saveMovies(movie) {
     saveListContent((prev) => {
-      if (prev.some((item) => item.imdbID === movie.imdbID)) {
-        alert("Already saved!");
-        console.log("Already saved! ", movie);
-        return prev;
-      }
+      const isSaved = prev.some((item) => item.imdbID === movie.imdbID);
 
-      console.log("Saved movies: ", movie);
-      return [...prev, movie];
+      if (isSaved) {
+        // Hapus dari list
+        const updated = prev.filter((item) => item.imdbID !== movie.imdbID);
+        console.log("Removed movie: ", movie);
+        return updated;
+      } else {
+        // Tambahkan ke list
+        console.log("Saved movie: ", movie);
+        return [...prev, movie];
+      }
     });
   }
 

@@ -2,7 +2,7 @@ import { Sling as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import logo1 from "../assets/logo1.png";
 
-export default function Navbar({ setQuery, saveContent, setIsClicked }) {
+export default function Navbar({ setQuery }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function setOpen() {
@@ -44,9 +44,7 @@ export default function Navbar({ setQuery, saveContent, setIsClicked }) {
       </Nav>
 
       {/* konten lain di sini */}
-      {isOpen && (
-        <ListMenu saveContent={saveContent} setIsClicked={setIsClicked} />
-      )}
+      {isOpen && <ListMenu />}
     </div>
   );
 }
@@ -83,11 +81,11 @@ function Login() {
   );
 }
 
-function ListMenu({ setIsClicked }) {
+function ListMenu() {
   return (
     <div className="list-menu">
       <ul>
-        <li onClick={() => !setIsClicked}>Saved</li>
+        <li>Saved</li>
         <li>Tv Shows</li>
         <li>Movies</li>
         <li>Trending</li>
