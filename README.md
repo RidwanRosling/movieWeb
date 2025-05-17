@@ -9,7 +9,7 @@
 * Responsive grid layout for movie cards
 * Hamburger sidebar menu for navigation
 * Centered search bar in the navbar
-* Clean and modern CSS styling
+* responsive in mobile phone
 
 ## Tech Stack
 
