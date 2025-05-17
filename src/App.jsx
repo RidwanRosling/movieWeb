@@ -6,6 +6,7 @@ import { AnimatedBackground } from "animated-backgrounds";
 const KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
+  const [saveContent, setSaveContent] = useState([]);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("Harry Potter");
@@ -41,7 +42,11 @@ function App() {
     <>
       <Navbar setQuery={setQuery} />
       <AnimatedBackground animationName="fireflies" />
-      <MainContent movies={movies} error={error} />
+      <MainContent
+        saveListContent={setSaveContent}
+        movies={movies}
+        error={error}
+      />
     </>
   );
 }

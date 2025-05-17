@@ -84,7 +84,7 @@ function ListMenu() {
   return (
     <div className="list-menu">
       <ul>
-        <li>Saved</li>
+        <li>saved</li>
         <li>Tv Shows</li>
         <li>Movies</li>
         <li>Trending</li>
