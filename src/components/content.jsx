@@ -1,5 +1,6 @@
 import Tilt from "react-parallax-tilt";
-import { CiBookmark } from "react-icons/ci";
+import { CiBookmark, CiBookmarkCheck } from "react-icons/ci";
+import { useState } from "react";
 
 export default function MainContent({ movies, error, saveListContent }) {
   function saveMovies(movie) {
@@ -48,6 +49,15 @@ export default function MainContent({ movies, error, saveListContent }) {
 }
 
 function Content({ movie, saveMovies }) {
+  const [ciBookmark, setCiBookmark] = useState(false);
+  function changeBookmark() {
+    setCiBookmark((prev) => !prev);
+    if (!ciBookmark) {
+      saveMovies(movie);
+    }
+    console.log("Bookmark: ", movie);
+  }
+
   return (
     <div className="content" key={movie.imdbID}>
       <Tilt
@@ -62,10 +72,11 @@ function Content({ movie, saveMovies }) {
       </Tilt>
       <span className="span-content">{movie.Title}</span>
       <div className="save-detail">
-        <CiBookmark
-          onClick={() => saveMovies(movie)} // Pass the movie object
-          className="save-icon"
-        />
+        {ciBookmark ? (
+          <CiBookmarkCheck className="save-icon" onClick={changeBookmark} />
+        ) : (
+          <CiBookmark className="save-icon" onClick={changeBookmark} />
+        )}
 
         <span
           className="detail-content"

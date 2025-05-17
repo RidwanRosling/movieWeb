@@ -1,7 +1,8 @@
 import { Sling as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import logo1 from "../assets/logo1.png";
-export default function Navbar({ setQuery }) {
+
+export default function Navbar({ setQuery, saveContent, setIsClicked }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function setOpen() {
@@ -43,7 +44,9 @@ export default function Navbar({ setQuery }) {
       </Nav>
 
       {/* konten lain di sini */}
-      {isOpen && <ListMenu />}
+      {isOpen && (
+        <ListMenu saveContent={saveContent} setIsClicked={setIsClicked} />
+      )}
     </div>
   );
 }
@@ -80,11 +83,11 @@ function Login() {
   );
 }
 
-function ListMenu() {
+function ListMenu({ setIsClicked }) {
   return (
     <div className="list-menu">
       <ul>
-        <li>saved</li>
+        <li onClick={() => !setIsClicked}>Saved</li>
         <li>Tv Shows</li>
         <li>Movies</li>
         <li>Trending</li>
@@ -93,3 +96,40 @@ function ListMenu() {
     </div>
   );
 }
+
+// export function Saved({ saveContent }) {
+//   return (
+//     <div className="container-content">
+//       <div className="content" key={saveContent.imdbID}>
+//         <Tilt
+//           className="parallax-effect-glare-scale"
+//           perspective={600}
+//           glareEnable={true}
+//           glareMaxOpacity={0.45}
+//           scale={1.02}
+//           gyroscope={false}
+//         >
+//           <img
+//             className="img-content"
+//             src={saveContent.Poster}
+//             alt={saveContent.Title}
+//           />
+//         </Tilt>
+//         <span className="span-content">{saveContent.Title}</span>
+//         <div className="save-detail">
+//           <span
+//             className="detail-content"
+//             onClick={() => {
+//               window.open(
+//                 `https://www.imdb.com/title/${movie.imdbID}`,
+//                 "_blank"
+//               );
+//             }}
+//           >
+//             detail
+//           </span>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

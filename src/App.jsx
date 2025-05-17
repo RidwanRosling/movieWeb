@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/navbar";
 import MainContent from "./components/content";
 import { AnimatedBackground } from "animated-backgrounds";
+import Saved from "./components/SavedContent";
 
 const KEY = import.meta.env.VITE_API_KEY;
 
@@ -10,6 +11,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("Harry Potter");
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     async function fetchMovies() {
@@ -40,13 +42,22 @@ function App() {
 
   return (
     <>
-      <Navbar setQuery={setQuery} />
-      <AnimatedBackground animationName="fireflies" />
-      <MainContent
-        saveListContent={setSaveContent}
-        movies={movies}
-        error={error}
+      <Navbar
+        setQuery={setQuery}
+        saveContent={saveContent}
+        isClicked={isClicked}
+        setIsClicked={setIsClicked}
       />
+      <AnimatedBackground animationName="fireflies" />
+      {isClicked ? (
+        <Saved saveContent={saveContent} isClicked={isClicked} />
+      ) : (
+        <MainContent
+          saveListContent={setSaveContent}
+          movies={movies}
+          error={error}
+        />
+      )}
     </>
   );
 }
