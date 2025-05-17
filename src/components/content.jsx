@@ -24,6 +24,14 @@ function Content({ movie }) {
         <img className="img-content" src={movie.Poster} alt={movie.Title} />
       </Tilt>
       <span className="span-content">{movie.Title}</span>
+      <span
+        className="detail-content"
+        onClick={() => {
+          window.open(`https://www.imdb.com/title/${movie.imdbID}`, "_blank");
+        }}
+      >
+        detail
+      </span>
     </div>
   );
 }
