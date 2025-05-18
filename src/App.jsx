@@ -48,7 +48,7 @@ function App() {
         isClicked={isClicked}
         setIsClicked={setIsClicked}
       />
-      <AnimatedBackground animationName="fireflies" />
+      <AnimatedBackground animationName="starryNight" />
       <MainContent
         saveListContent={setSaveContent}
         movies={movies}
